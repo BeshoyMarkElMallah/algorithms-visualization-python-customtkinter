@@ -1,6 +1,7 @@
 # algorithms-visualization-python-customtkinter
 
-<h5> you Should Install this library</h5>
+<h3> you Should Install this library</h3>
+
 ```
 pip install customtkinter
 ```
