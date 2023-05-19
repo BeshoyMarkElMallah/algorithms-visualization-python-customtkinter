@@ -22,7 +22,7 @@ class SortingVisualizer:
         self.speed_slider = ctk.CTkSlider(self.button_frame, from_=1, to=10, width=200)
         self.speed_slider.pack(side=tk.TOP, pady=10)
         self.algorithm_var = tk.StringVar(value="Bubble Sort")
-        self.algorithm_menu = ctk.CTkOptionMenu(self.button_frame, values=["Bubble Sort", "Selection Sort", "Insertion Sort", "Quick Sort", "Heap Sort"], variable=self.algorithm_var)
+        self.algorithm_menu = ctk.CTkOptionMenu(self.button_frame, values=["Bubble Sort", "Selection Sort", "Insertion Sort", "Quick Sort"], variable=self.algorithm_var)
         self.algorithm_menu.pack(side=tk.TOP, pady=10)
         self.data_size_label = ctk.CTkLabel(self.button_frame, text="Data Size")
         self.data_size_label.pack(side=tk.TOP, pady=10)
@@ -99,8 +99,6 @@ class SortingVisualizer:
             self.insertion_sort()
         elif algorithm == "Quick Sort":
             self.quick_sort()
-        elif algorithm == "Heap Sort":
-            self.heap_sort()
         self.sorted_index = len(self.data)
         self.draw_data()
         self.button.configure(state=tk.NORMAL)
