@@ -22,7 +22,7 @@ class SortingVisualizer:
         self.speed_slider = ctk.CTkSlider(self.button_frame, from_=1, to=10, width=200)
         self.speed_slider.pack(side=tk.TOP, pady=10)
         self.algorithm_var = tk.StringVar(value="Bubble Sort")
-        self.algorithm_menu = ctk.CTkOptionMenu(self.button_frame, values=["Bubble Sort", "Selection Sort", "Insertion Sort", "Quick Sort"], variable=self.algorithm_var)
+        self.algorithm_menu = ctk.CTkOptionMenu(self.button_frame, values=["Bubble Sort", "Selection Sort", "Insertion Sort", "Quick Sort"], variable=self.algorithm_var,command=self.update_time_complexity)
         self.algorithm_menu.pack(side=tk.TOP, pady=10)
         self.data_size_label = ctk.CTkLabel(self.button_frame, text="Data Size")
         self.data_size_label.pack(side=tk.TOP, pady=10)
@@ -44,6 +44,8 @@ class SortingVisualizer:
         self.sorted_index = len(self.data)  # Define sorted_index attribute
         self.draw_data()
         self.sorting = False
+        self.time_complexity_label = ctk.CTkLabel(self.button_frame, text="")
+        self.time_complexity_label.pack(side=tk.TOP, pady=10)
         
     def generate_data(self):
         return [random.randint(1, 100) for _ in range(int(self.size_slider.get()))]
@@ -86,7 +88,18 @@ class SortingVisualizer:
         legend_text.pack(side=tk.LEFT)
         return legend_item
         
+    def update_time_complexity(self, *args):
+        algorithm = self.algorithm_var.get()
+        if algorithm == "Bubble Sort":
+            self.time_complexity_label.configure(text="Time Complexity: O(n^2)")
+        elif algorithm == "Selection Sort":
+            self.time_complexity_label.configure(text="Time Complexity: O(n^2)")
+        elif algorithm == "Insertion Sort":
+            self.time_complexity_label.configure(text="Time Complexity: O(n^2)")
+        elif algorithm == "Quick Sort":
+            self.time_complexity_label.configure(text="Time Complexity: O(n log n) avg, O(n^2) worst")
     def sort(self):
+        self.time_complexity_label.configure(text="")
         self.sorting = True
         self.button.configure(state=tk.DISABLED)
         self.stop_button.configure(state=tk.NORMAL)
